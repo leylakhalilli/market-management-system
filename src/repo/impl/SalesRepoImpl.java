@@ -1,16 +1,18 @@
-package service.sales;
+package repo.impl;
 
 import model.Product;
 import model.Sales;
 import model.SalesItem;
+import repo.SalesRepo;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class SalesService implements ISalesService {
+public class SalesRepoImpl implements SalesRepo {
     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//    IMarketable marketable=new Marketable();
     List<Sales> salesList = new ArrayList<>();
     List<SalesItem> salesItemList = new ArrayList<>();
     List<Product> productList = new ArrayList<>();
@@ -33,6 +35,9 @@ public class SalesService implements ISalesService {
 
         System.out.print("\tSoldProductCount: ");
         int soldCount = scanner.nextInt();
+
+        System.out.println(productList);
+
         updateProductCount(soldId, soldCount);
 
         SalesItem salesItem = new SalesItem(soldId, soldCount);
@@ -95,13 +100,19 @@ public class SalesService implements ISalesService {
 
     @Override
     public void getSalesByTwoDate(Date startDate, Date endDate) throws Exception {
-
+        for (int i = 0; i < salesList.size(); i++) {
+            Sales sales = salesList.get(i);
+            if (sales.getSaleDate().after(startDate) && sales.getSaleDate().before(endDate)) {
+                System.out.println(salesList.get(i));
+            } else throw new Exception("bu tarix araliginda satish olunmayib");
+        }
 
     }
 
 
     public int updateProductCount(int id, int soldCount) {
-        for (Product product : productList) {
+        for (int i = 0; i < productList.size(); i++) {
+            Product product = productList.get(i);
             if (product.getId() == id && product.getProductCount() > 0) {
                 product.setProductCount(product.getProductPrice() - soldCount);
                 return soldCount;

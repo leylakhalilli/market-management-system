@@ -1,16 +1,13 @@
-package service.product;
+package repo;
 
-import model.Product;
 import model.ProductType;
 
-public interface IMarketable {
+public interface MarketRepo {
     void create();
 
     void update(int id);
 
     void delete(int id) throws Exception;
-
-//    Product getProductById(int id);
 
     void getAllProduct();
 

@@ -1,12 +1,12 @@
-package service.product;
+package repo.impl;
 
 import model.Product;
 import model.ProductType;
+import repo.MarketRepo;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
-public class Marketable implements IMarketable {
+public class MarketRepoImpl implements MarketRepo {
     List<Product> productList = new ArrayList<>();
 
     @Override
@@ -112,4 +112,6 @@ public class Marketable implements IMarketable {
             }
         }
     }
+
+
 }

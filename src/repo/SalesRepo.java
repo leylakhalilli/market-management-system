@@ -1,11 +1,9 @@
-package service.sales;
-
-import model.Sales;
+package repo;
 
 import java.text.ParseException;
 import java.util.Date;
 
-public interface ISalesService {
+public interface SalesRepo {
     void create() throws ParseException;
 
     void delete(int id);

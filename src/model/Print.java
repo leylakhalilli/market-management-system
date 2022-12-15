@@ -1,17 +1,16 @@
 package model;
 
-import service.product.Marketable;
-import service.sales.SalesService;
+import repo.impl.MarketRepoImpl;
+import repo.impl.SalesRepoImpl;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Print {
-    Marketable marketable = new Marketable();
-    SalesService salesService = new SalesService();
+    MarketRepoImpl marketable = new MarketRepoImpl();
+    SalesRepoImpl salesService = new SalesRepoImpl();
     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
 
